@@ -9,10 +9,17 @@ var addBinary = function(a, b) {
     const biggestLenght = lengthDiff > 0 ? a.length : b.length;
     let additionalValue = 0;
     for (let i = biggestLenght - 1; i >= 0; i--) {
-        let firstVal = a[i] ? +a[i] : 0;
-        let secondVal = b[i] ? +b[i] : 0;
-        if (firstVal + secondVal + additionalValue > 1) {
-            sum = 0 + sum;
+        let firstVal, secondVal;
+        if (lengthDiff > 0) {
+            firstVal = +a[i];
+            secondVal = b[i - lengthDiff] ? +b[i - lengthDiff] : 0;
+        } else {
+            firstVal = a[i + lengthDiff] ? +a[i + lengthDiff] : 0;;
+            secondVal = +b[i];
+        }
+        let tmpSum = firstVal + secondVal + additionalValue;
+        if (tmpSum > 1) {
+            sum = tmpSum === 2 ? 0 + sum : 1 + sum;
             additionalValue = 1;
             continue;
         }
