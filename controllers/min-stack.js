@@ -2,7 +2,7 @@
  * initialize your data structure here.
  */
 var MinStack = function() {
-    
+    this.stack = [];
 };
 
 /** 
@@ -10,28 +10,34 @@ var MinStack = function() {
  * @return {void}
  */
 MinStack.prototype.push = function(x) {
-    
+    this.stack.push(x);
+    return;
 };
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function() {
-    
+    if (this.stack.length) this.stack.pop();
+    return;
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.top = function() {
-    
+    return this.stack[this.stack.length - 1];
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.getMin = function() {
-    
+    let minElement;
+    this.stack.forEach((number) => {
+        if (minElement === undefined || number < minElement) minElement = number;
+    });
+    return minElement;
 };
 
 /** 
