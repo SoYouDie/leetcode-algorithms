@@ -1,6 +1,6 @@
 const trailingZeroes = require('../controllers/factorial-trailing-zeroes');
 
-const num1 = 30;
+const num1 = 80;
 const num2 = 5;
 
 console.log(trailingZeroes(num1));
